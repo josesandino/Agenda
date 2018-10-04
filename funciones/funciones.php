@@ -1,3 +1,3 @@
-<?php
-
-    require_once ('../funciones/bd_conexion.php');
+ <?php
+    
+    include_once 'bd_conexion.php';

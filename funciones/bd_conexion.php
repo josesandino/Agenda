@@ -1,7 +1,9 @@
 <?php
-    $conn = new('localhost', 'root', 'root', 'agenda');
 
-    if($conn->connection_error) {
+    $conn = new mysqli('localhost', 'root', 'root', 'agenda');
+
+    if($conn->connect_error) {
         echo $error -> $conn->connect_error;
     }
-?>    
+   
+?>
