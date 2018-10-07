@@ -30,7 +30,7 @@
             </div>
             <div class="box-body">
                 <!-- form start -->
-                <form role="form" name="guardar_registro" id="guardar_registro" method="post" action="modelo-admin.php">
+                <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
                       <div class="box-body">
                             <div class="form-group">
                                 <label for="usuario">Usuario:</label>
@@ -43,6 +43,11 @@
                             <div class="form-group">
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password para Iniciar Sesión">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Repetir Password:</label>
+                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Password para Iniciar Sesión">
+                                <span id="resultado_password" class="help-block"></span>
                             </div>
                       </div>
                       <!-- /.box-body -->

@@ -25,5 +25,7 @@ $(document).ready(function () {
                 search: 'Buscar: '
             }
             });
+    
+    $('#repetir_password')        
         
   })

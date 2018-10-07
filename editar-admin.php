@@ -17,8 +17,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Crear Administrador
-        <small>llena el formulario para crear un administrador</small>
+        Editar Administrador
+        <small>puedes editar los datos del administrador aquí</small>
       </h1>
     </section>
 
@@ -31,7 +31,7 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Crear Administrador</h3>
+              <h3 class="box-title">Editar Administrador</h3>
             </div>
             <div class="box-body">
                 <?php                
@@ -40,7 +40,7 @@
                     $admin = $resultado->fetch_assoc();
                 ?>
                 <!-- form start -->
-                <form role="form" name="guardar_registro" id="guardar_registro" method="post" action="modelo-admin.php">
+                <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
                       <div class="box-body">
                             <div class="form-group">
                                 <label for="usuario">Usuario:</label>
@@ -60,7 +60,7 @@
                       <div class="box-footer">
                           <input type="hidden" name="registro" value="actualizar">
                           <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
-                          <button type="submit" class="btn btn-primary">Añadir</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
                       </div>
                 </form>
             </div>

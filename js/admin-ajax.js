@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#guardar_registro').on('submit', function(e) {
+    $('#guardar-registro').on('submit', function(e) {
         e.preventDefault();
 
         var datos = $(this).serializeArray();
@@ -15,7 +15,7 @@ $(document).ready(function() {
                 if(resultado.respuesta == 'exito') {
                     swal (
                         'Correcto',
-                        'El administrador se creo correctamente',
+                        'Se guardó correctamente',
                         'success'
                     )
                     
