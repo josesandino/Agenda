@@ -76,6 +76,31 @@ if($_POST['registro'] == 'actualizar') {
     die(json_encode($respuesta));
 }
 
+if($_POST['registro'] == 'eliminar') {
+    $id_borrar = $_POST['id'];
+
+    try {
+        $stmt = $conn->prepare('DELETE FROM admins WHERE id_admin = ? ');
+        $stmt->bind_param('i', $id_borrar);
+        $stmt->execute();
+        if($stmt->affected_rows) {
+            $respuesta = array(
+                'respuesta' => 'exito',
+                'id_eliminado' => $id_borrar
+            );
+        } else {
+            $respuesta = array(
+                'respuesta' => 'error'
+            );
+        }
+    } catch (Exception $e) {
+        $respuesta = array(
+            'respuesta' => $e->getMessage()
+        );
+    }
+    die(json_encode($respuesta));
+}
+
 if(isset($_POST['login-admin'])) {
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];

@@ -54,13 +54,18 @@
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password para Iniciar Sesión">
                             </div>
+                            <div class="form-group">
+                                <label for="password">Repetir Password:</label>
+                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Password para Iniciar Sesión">
+                                <span id="resultado_password" class="help-block"></span>
+                            </div>
                       </div>
                       <!-- /.box-body -->
 
                       <div class="box-footer">
                           <input type="hidden" name="registro" value="actualizar">
                           <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
-                          <button type="submit" class="btn btn-primary">Guardar</button>
+                          <button type="submit" class="btn btn-primary" id="crear_registro">Guardar</button>
                       </div>
                 </form>
             </div>
