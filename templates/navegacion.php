@@ -7,7 +7,8 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="info">
-          <p>Hola: Admin</p>
+          
+          <p><?php echo $_SESSION['nombre']; ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -82,6 +83,7 @@
           </ul>
         </li>
 
+        <?php if($_SESSION['nivel'] == 1): ?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-user" aria-hidden="true"></i>
@@ -92,6 +94,7 @@
             <li><a href="crear-admin.php"><i class="fa fa-plus-circle"></i> Agregar</a></li>
           </ul>
         </li>
+        <?php endif; ?>
 
         <li class="treeview">
           <a href="#">
