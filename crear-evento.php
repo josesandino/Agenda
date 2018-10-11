@@ -12,8 +12,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Crear Administrador
-        <small>llena el formulario para crear un administrador</small>
+        Crear Evento
+        <small>llena el formulario para crear un evento</small>
       </h1>
     </section>
 
@@ -26,35 +26,92 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Crear Administrador</h3>
+              <h3 class="box-title">Crear Evento</h3>
             </div>
             <div class="box-body">
                 <!-- form start -->
-                <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
+                <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-evento.php">
                       <div class="box-body">
                             <div class="form-group">
-                                <label for="usuario">Usuario:</label>
-                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+                                <label for="usuario">Titulo Evento:</label>
+                                <input type="text" class="form-control" id="titulo_evento" name="titulo_evento" placeholder="Titulo Evento">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nombre">Categoria:</label>
+                                <select name="categoria_evento" class="form-control seleccionar">
+                                  <option value="0">- Seleccione -</option>
+                                    <?php 
+                                      try{
+                                          $sql = "SELECT * FROM categoria_evento";
+                                          $resultado = $conn->query($sql);
+                                          while($cat_evento = $resultado->fetch_assoc()) { ?>
+                                            <option value="<?php echo $cat_evento['id_categoria']; ?>">
+                                                <?php echo $cat_evento['cat_evento']; ?>
+                                            </option>
+                                        
+                                        <?php }
+                                      } catch (Exception $e) {
+                                          echo "Error: " . $e->getMessage();
+                                      }
+                                    ?>
+                                </select>
+                            </div>
+                            <!-- Date -->
+                            <div class="form-group">
+                                <label>Fecha Evento:</label>
+                                    <div class="input-group date">
+                                          <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                          </div>
+                                          <input type="text" class="form-control pull-right" id="fecha" name="fecha_evento">
+                                    </div>
+                                <!-- /.input group -->
+                            </div>
+                            <!-- /.form group -->
+                            <!-- time Picker -->
+                            <div class="bootstrap-timepicker">
+                                  <div class="form-group">
+                                     <label>Hora:</label>
+
+                                          <div class="input-group">
+                                                <input type="text" class="form-control timepicker" name="hora_evento">
+
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                          </div>
+                                          <!-- /.input group -->
+                                  </div>
+                                  <!-- /.form group -->
                             </div>
                             <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo">
+                                <label for="nombre">Invitado o Ponente:</label>
+                                <select name="invitado" class="form-control seleccionar">
+                                  <option value="0">- Seleccione -</option>
+                                    <?php 
+                                      try{
+                                          $sql = "SELECT invitado_id, nombre_invitado, apellido_invitado FROM invitados ";
+                                          $resultado = $conn->query($sql);
+                                          while($invitados = $resultado->fetch_assoc()) { ?>
+                                            <option value="<?php echo $invitados['invitado_id']; ?>">
+                                                <?php echo $invitados['nombre_invitado'] . " " . $invitados['apellido_invitado']; ?>
+                                            </option>
+                                        
+                                        <?php }
+                                      } catch (Exception $e) {
+                                          echo "Error: " . $e->getMessage();
+                                      }
+                                    ?>
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password para Iniciar Sesión">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Repetir Password:</label>
-                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Password para Iniciar Sesión">
-                                <span id="resultado_password" class="help-block"></span>
-                            </div>
+
                       </div>
                       <!-- /.box-body -->
 
                       <div class="box-footer">
                           <input type="hidden" name="registro" value="nuevo">
-                          <button type="submit" class="btn btn-primary" id="crear_registro">Añadir</button>
+                          <button type="submit" class="btn btn-primary" >Añadir</button>
                       </div>
                 </form>
             </div>

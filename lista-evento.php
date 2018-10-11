@@ -35,26 +35,36 @@
                   <th>Hora</th>
                   <th>Categoría</th>
                   <th>Invitado</th>
+                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                     <?php
                      try {
-                        $sql = "SELECT id_admin, usuario, nombre FROM admins";
+                        $sql = "SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, nombre_invitado, apellido_invitado ";
+                        $sql .= " FROM eventos ";
+                        $sql .= " INNER JOIN categoria_evento ";
+                        $sql .= " ON eventos.id_cat_evento=categoria_evento.id_categoria ";
+                        $sql .= " INNER JOIN invitados ";
+                        $sql .= " ON eventos.id_inv=invitados.invitado_id ";
+                        $sql .= " ORDER BY evento_id ";
                         $resultado = $conn->query($sql);
                      } catch (Exception $e) {
                         $error = $e->getMessage();
                         echo $error;
                      }      
-                     while($admin = $resultado->fetch_assoc() ) { ?>
+                     while($eventos = $resultado->fetch_assoc() ) { ?>
                           <tr>
-                              <td><?php echo $admin['usuario']; ?></td>
-                              <td><?php echo $admin['nombre']; ?></td>
+                              <td><?php echo $eventos['nombre_evento']; ?></td>
+                              <td><?php echo $eventos['fecha_evento']; ?></td>
+                              <td><?php echo $eventos['hora_evento']; ?></td>
+                              <td><?php echo $eventos['cat_evento']; ?></td>
+                              <td><?php echo $eventos['nombre_invitado'] . " " . $eventos['apellido_invitado']; ?></td>
                               <td>
-                                <a href="editar-admin.php?id=<?php echo $admin['id_admin']; ?>" class="btn bg-orange btn-flat margin ">
+                                <a href="editar-admin.php?id=<?php echo $eventos['evento_id']; ?>" class="btn bg-orange btn-flat margin ">
                                   <i class="fa fa-pencil"></i>
                                 </a>
-                                <a href="#" data-id="<?php echo $admin['id_admin']; ?>" data-tipo="admin" class="btn bg-maroon btn-flat margin borrar_registro">
+                                <a href="#" data-id="<?php echo $eventos['evento_id']; ?>" data-tipo="evento" class="btn bg-maroon btn-flat margin borrar_registro">
                                   <i class="fa fa-trash"></i>
                                 </a>
                               </td>
@@ -68,6 +78,7 @@
                   <th>Hora</th>
                   <th>Categoría</th>
                   <th>Invitado</th>
+                  <th>Acciones</th>
                 </tr>
                 </tfoot>
               </table>
