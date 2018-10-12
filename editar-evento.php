@@ -39,13 +39,7 @@
                 <?php 
                     $sql = "SELECT * FROM eventos WHERE evento_id = $id";
                     $resultado = $conn->query($sql);
-                    $evento = $resultado->fetch_assoc();
-
-                    echo "<pre>";
-                    var_dump($evento);
-                    echo "</pre>";
-
-                
+                    $evento = $resultado->fetch_assoc();                
                 ?>
                 <!-- form start -->
                 <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-evento.php">
@@ -61,14 +55,20 @@
                                   <option value="0">- Seleccione -</option>
                                     <?php 
                                       try{
-                                          $sql = "SELECT * FROM categoria_evento";
+                                          $categoria_actual = $evento['id_cat_evento'];
+                                          $sql = "SELECT * FROM categoria_evento ";
                                           $resultado = $conn->query($sql);
-                                          while($cat_evento = $resultado->fetch_assoc()) { ?>
-                                            <option value="<?php echo $cat_evento['id_categoria']; ?>">
+                                          while($cat_evento = $resultado->fetch_assoc()) { 
+                                            if($cat_evento['id_categoria'] == $categoria_actual) { ?>
+                                              <option value="<?php echo $cat_evento['id_categoria']; ?>" selected>
+                                                  <?php echo $cat_evento['cat_evento']; ?>
+                                              </option>
+                                            <?php } else { ?>
+                                              <option value="<?php echo $cat_evento['id_categoria']; ?>" >
                                                 <?php echo $cat_evento['cat_evento']; ?>
-                                            </option>
-                                        
+                                               </option>
                                         <?php }
+                                          }
                                       } catch (Exception $e) {
                                           echo "Error: " . $e->getMessage();
                                       }
@@ -78,11 +78,15 @@
                             <!-- Date -->
                             <div class="form-group">
                                 <label>Fecha Evento:</label>
+                                <?php
+                                      $fecha = $evento['fecha_evento'];
+                                      $fecha_formato = date('m/d/Y', strtotime($fecha));
+                                ?>
                                     <div class="input-group date">
                                           <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                           </div>
-                                          <input type="text" class="form-control pull-right" id="fecha" name="fecha_evento">
+                                          <input type="text" class="form-control pull-right" id="fecha" name="fecha_evento" value="<?php echo $fecha_formato; ?>">
                                     </div>
                                 <!-- /.input group -->
                             </div>
@@ -91,9 +95,12 @@
                             <div class="bootstrap-timepicker">
                                   <div class="form-group">
                                      <label>Hora:</label>
-
+                                     <?php
+                                         $hora = $evento['hora_evento']; 
+                                         $hora_formato = date('h:i a', strtotime($hora));
+                                     ?>
                                           <div class="input-group">
-                                                <input type="text" class="form-control timepicker" name="hora_evento">
+                                                <input type="text" class="form-control timepicker" name="hora_evento" value="<?php echo $hora_formato; ?>">
 
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-clock-o"></i>
@@ -109,14 +116,20 @@
                                   <option value="0">- Seleccione -</option>
                                     <?php 
                                       try{
+                                          $invitado_actual = $evento['id_inv'];
                                           $sql = "SELECT invitado_id, nombre_invitado, apellido_invitado FROM invitados ";
                                           $resultado = $conn->query($sql);
-                                          while($invitados = $resultado->fetch_assoc()) { ?>
-                                            <option value="<?php echo $invitados['invitado_id']; ?>">
-                                                <?php echo $invitados['nombre_invitado'] . " " . $invitados['apellido_invitado']; ?>
-                                            </option>
-                                        
-                                        <?php }
+                                          while($invitados = $resultado->fetch_assoc()) { 
+                                                if($invitados['invitado_id'] == $invitado_actual) { ?>
+                                                    <option value="<?php echo $invitados['invitado_id']; ?>" selected>
+                                                        <?php echo $invitados['nombre_invitado'] . " " . $invitados['apellido_invitado']; ?>
+                                                    </option>
+                                                <?php } else { ?>
+                                                    <option value="<?php echo $invitados['invitado_id']; ?>" >
+                                                      <?php echo $invitados['nombre_invitado'] . " " . $invitados['apellido_invitado']; ?>
+                                                    </option>                                        
+                                                <?php } // fin del if
+                                          } // fin del while
                                       } catch (Exception $e) {
                                           echo "Error: " . $e->getMessage();
                                       }
@@ -128,7 +141,8 @@
                       <!-- /.box-body -->
 
                       <div class="box-footer">
-                          <input type="hidden" name="registro" value="nuevo">
+                          <input type="hidden" name="registro" value="actualizar">
+                          <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
                           <button type="submit" class="btn btn-primary" >Añadir</button>
                       </div>
                 </form>

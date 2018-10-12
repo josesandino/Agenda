@@ -56,8 +56,8 @@
             <span>Categoria Eventos</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
-            <li><a href="#"><i class="fa fa-plus-circle"></i> Agregar</a></li>
+            <li><a href="lista-categorias.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
+            <li><a href="crear-categoria.php"><i class="fa fa-plus-circle"></i> Agregar</a></li>
           </ul>
         </li>
 
