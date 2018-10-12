@@ -1,13 +1,16 @@
 <?php
 include_once 'funciones/funciones.php';
 
+$nombre_categoria = $_POST['nombre_categoria'];
+$icono = $_POST['icono'];
+
+$id_registro = $_POST['id_registro'];
 
 
-if($_POST['registro'] == 'nuevo') {
-    die(json_encode($_POST));
+if($_POST['registro'] == 'nuevo') {    
     try {
-        $stmt = $conn->prepare('INSERT INTO eventos (nombre_evento, fecha_evento, hora_evento, id_cat_evento, id_inv) VALUES ( ?, ?, ?, ?, ? ) ');
-        $stmt->bind_param('sssii', $titulo, $fecha_formateada, $hora_formateada, $categoria_id, $invitado_id);
+        $stmt = $conn->prepare('INSERT INTO categoria_evento (cat_evento, icono) VALUES (?, ?) ');
+        $stmt->bind_param("ss", $nombre_categoria, $icono);
         $stmt->execute();
         $id_insertado = $stmt->insert_id;
         if($stmt->affected_rows) {
@@ -31,11 +34,10 @@ if($_POST['registro'] == 'nuevo') {
 }
 
 if($_POST['registro'] == 'actualizar') {
-  
-    
+   
     try {
-        $stmt = $conn->prepare('UPDATE eventos SET nombre_evento = ?, fecha_evento = ?, hora_evento = ?, id_cat_evento = ?, id_inv = ?, editado = NOW()  WHERE evento_id = ? ');
-        $stmt->bind_param('sssiii', $titulo, $fecha_formateada, $hora_formateada, $categoria_id, $invitado_id, $id_registro );
+        $stmt = $conn->prepare('UPDATE categoria_evento SET cat_evento = ?, icono = ?, editado = NOW() WHERE id_categoria = ? ');
+        $stmt->bind_param('ssi', $nombre_categoria, $icono, $id_registro );
         $stmt->execute();
         if($stmt->affected_rows) {
             $respuesta = array(
@@ -62,7 +64,7 @@ if($_POST['registro'] == 'eliminar') {
     $id_borrar = $_POST['id'];
 
     try {
-        $stmt = $conn->prepare('DELETE FROM eventos WHERE evento_id = ? ');
+        $stmt = $conn->prepare('DELETE FROM categoria_evento WHERE id_categoria = ? ');
         $stmt->bind_param('i', $id_borrar);
         $stmt->execute();
         if($stmt->affected_rows) {
