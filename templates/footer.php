@@ -31,6 +31,8 @@
 <script src="js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="js/bootstrap-timepicker.min.js"></script>
+<!--Fontawesome-iconpicker-->
+<script src="js/fontawesome-iconpicker.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
 <script src="js/login-ajax.js"></script>

@@ -12,7 +12,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
           <h1>
-            Listado de Administradores
+            Listado de Categorías de Eventos
             <small></small>
           </h1>
     </section>
@@ -23,36 +23,36 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Maneja los usuarios en esta sección</h3>
+              <h3 class="box-title">Maneja las categorías de los eventos</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="registros" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Usuario</th>
                   <th>Nombre</th>
+                  <th>Icono</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                     <?php
                      try {
-                        $sql = "SELECT id_admin, usuario, nombre FROM admins";
+                        $sql = "SELECT * FROM categoria_Evento ";
                         $resultado = $conn->query($sql);
                      } catch (Exception $e) {
                         $error = $e->getMessage();
                         echo $error;
                      }      
-                     while($admin = $resultado->fetch_assoc() ) { ?>
+                     while($categoria = $resultado->fetch_assoc() ) { ?>
                           <tr>
-                              <td><?php echo $admin['usuario']; ?></td>
-                              <td><?php echo $admin['nombre']; ?></td>
+                              <td><?php echo $categoria['cat_evento']; ?></td>
+                              <td><i class="fa <?php echo $categoria['icono']; ?>"></i></td>
                               <td>
-                                <a href="editar-admin.php?id=<?php echo $admin['id_admin']; ?>" class="btn bg-orange btn-flat margin ">
+                                <a href="editar-admin.php?id=<?php echo $categoria['id_categoria']; ?>" class="btn bg-orange btn-flat margin ">
                                   <i class="fa fa-pencil"></i>
                                 </a>
-                                <a href="#" data-id="<?php echo $admin['id_admin']; ?>" data-tipo="admin" class="btn bg-maroon btn-flat margin borrar_registro">
+                                <a href="#" data-id="<?php echo $categoria['id_categoria']; ?>" data-tipo="categoria" class="btn bg-maroon btn-flat margin borrar_registro">
                                   <i class="fa fa-trash"></i>
                                 </a>
                               </td>
@@ -61,8 +61,8 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Usuario</th>
                   <th>Nombre</th>
+                  <th>Icono</th>
                   <th>Acciones</th>
                 </tr>
                 </tfoot>

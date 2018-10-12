@@ -43,7 +43,8 @@ $(document).ready(function () {
         }
     });        
         
-  })
+
+})
 
    //Date picker
    $('#fecha').datepicker({
@@ -57,3 +58,5 @@ $(document).ready(function () {
    $('.timepicker').timepicker({
     showInputs: false
   });
+
+  $('#icono').iconpicker();

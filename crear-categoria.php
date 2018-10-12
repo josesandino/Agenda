@@ -12,8 +12,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Crear Administrador
-        <small>llena el formulario para crear un administrador</small>
+        Crear Categorías de Evento
+        <small>llena el formulario para crear una categoría</small>
       </h1>
     </section>
 
@@ -26,29 +26,25 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Crear Administrador</h3>
+              <h3 class="box-title">Crear Categoría</h3>
             </div>
             <div class="box-body">
                 <!-- form start -->
-                <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
+                <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-categoria.php">
                       <div class="box-body">
                             <div class="form-group">
-                                <label for="usuario">Usuario:</label>
-                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+                                <label for="usuario">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" placeholder="Categoría">
                             </div>
                             <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password para Iniciar Sesión">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Repetir Password:</label>
-                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Password para Iniciar Sesión">
-                                <span id="resultado_password" class="help-block"></span>
-                            </div>
+                                <label for="">Icono:</label>
+                                <div class="input-group">
+                                  <div class="input-group-addon">
+                                      <i class="fa fa-address-book"></i>
+                                  </div>
+                                  <input type="text" id="icono" name="icono" class="form-control pull-right" placeholder="fa-icon">
+                                </div>
+                            </div>                           
                       </div>
                       <!-- /.box-body -->
 

@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="css/select2.min.css">  
   <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="css/bootstrap-timepicker.min.css">
+  <!--Fontawesome-iconpicker-->
+  <link rel="stylesheet" href="css/fontawesome-iconpicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
