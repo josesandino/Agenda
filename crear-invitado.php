@@ -12,8 +12,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Crear Categorías de Evento
-        <small>llena el formulario para crear una categoría</small>
+        Crear Invitados
+        <small>llena el formulario pata añadir un invitado</small>
       </h1>
     </section>
 
@@ -26,31 +26,35 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Crear Categoría</h3>
+              <h3 class="box-title">Crear Invitado</h3>
             </div>
             <div class="box-body">
                 <!-- form start -->
-                <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-categoria.php">
+                <form role="form" name="guardar-registro" id="guardar-registro-archivo" method="post" action="modelo-invitado.php" enctype="multipart/form-data">
                       <div class="box-body">
                             <div class="form-group">
-                                <label for="usuario">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" placeholder="Categoría">
+                                <label for="nombre_invitado">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre_invitado" name="nombre_invitado" placeholder="Nombre">
+                            </div>   
+                            <div class="form-group">
+                                <label for="apellido_invitado">Apellido:</label>
+                                <input type="text" class="form-control" id="apellido_invitado" name="apellido_invitado" placeholder="Apellido">
                             </div>
                             <div class="form-group">
-                                <label for="">Icono:</label>
-                                <div class="input-group">
-                                  <div class="input-group-addon">
-                                      <i class="fa fa-address-book"></i>
-                                  </div>
-                                  <input type="text" id="icono" name="icono" class="form-control pull-right" placeholder="fa-icon">
-                                </div>
-                            </div>                           
+                                <label for="biografia_invitado">Biografia: </label>
+                                <textarea class="form-control" name="biografia_invitado" id="biografia_invitado"  rows="8" placeholder="Biografía"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen_invitado">Imagen:</label>
+                                <input clase="form-control" type="file" id="imagen_invitado" name="archivo_imagen">
+                                <p class="help-block">Añada la imagen del invitado aquí</p>
+                            </div>                                                    
                       </div>
                       <!-- /.box-body -->
 
                       <div class="box-footer">
                           <input type="hidden" name="registro" value="nuevo">
-                          <button type="submit" class="btn btn-primary" id="crear_registro_categoria">Añadir</button>
+                          <button type="submit" class="btn btn-primary" id="crear_registro_invitado">Añadir</button>
                       </div>
                 </form>
             </div>
