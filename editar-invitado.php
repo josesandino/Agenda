@@ -1,4 +1,9 @@
 <?php
+
+      $id = $_GET['id'];
+      if(!filter_var($id, FILTER_VALIDATE_INT)) {
+          die("Error");
+      }
       include_once 'funciones/sesiones.php';
       include_once 'funciones/funciones.php';
       include_once 'templates/header.php';
@@ -12,8 +17,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Crear Invitados
-        <small>llena el formulario pata añadir un invitado</small>
+        Editar Invitados
+        <small>llena el formulario para editar un invitado</small>
       </h1>
     </section>
 
@@ -26,23 +31,33 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Crear Invitado</h3>
+              <h3 class="box-title">Editar Invitado</h3>
             </div>
             <div class="box-body">
+                <?php
+                  $sql = "SELECT * FROM invitados WHERE invitado_id = $id ";
+                  $resultado = $conn->query($sql);
+                  $invitado = $resultado->fetch_assoc();         
+                ?>
                 <!-- form start -->
                 <form role="form" name="guardar-registro" id="guardar-registro-archivo" method="post" action="modelo-invitado.php" enctype="multipart/form-data">
                       <div class="box-body">
                             <div class="form-group">
                                 <label for="nombre_invitado">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre_invitado" name="nombre_invitado" placeholder="Nombre">
+                                <input type="text" class="form-control" id="nombre_invitado" name="nombre_invitado" placeholder="Nombre" value="<?php echo $invitado['nombre_invitado']; ?>">
                             </div>   
                             <div class="form-group">
                                 <label for="apellido_invitado">Apellido:</label>
-                                <input type="text" class="form-control" id="apellido_invitado" name="apellido_invitado" placeholder="Apellido">
+                                <input type="text" class="form-control" id="apellido_invitado" name="apellido_invitado" placeholder="Apellido" value="<?php echo $invitado['apellido_invitado']; ?>" >
                             </div>
                             <div class="form-group">
                                 <label for="biografia_invitado">Biografia: </label>
-                                <textarea class="form-control" name="biografia_invitado" id="biografia_invitado"  rows="8" placeholder="Biografía"></textarea>
+                                <textarea class="form-control" name="biografia_invitado" id="biografia_invitado"  rows="8" placeholder="Biografía" ><?php echo $invitado['descripcion']; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen_actual">Imagen Actual</label>
+                                <br>
+                                <img src="img/invitados/<?php echo $invitado['url_imagen']; ?>" width="200">
                             </div>
                             <div class="form-group">
                                 <label for="imagen_invitado">Imagen:</label>
@@ -53,7 +68,8 @@
                       <!-- /.box-body -->
 
                       <div class="box-footer">
-                          <input type="hidden" name="registro" value="nuevo">
+                          <input type="hidden" name="registro" value="actualizar">
+                          <input type="hidden" name="id_registro" value="<?php  echo $invitados['invitado_id']; ?>">
                           <button type="submit" class="btn btn-primary" id="crear_registro_invitado">Añadir</button>
                       </div>
                 </form>

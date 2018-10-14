@@ -49,12 +49,12 @@
                           <tr>
                               <td><?php echo $invitado['nombre_invitado'] . " " . $invitado['apellido_invitado']; ?></td>
                               <td><?php echo $invitado['descripcion']; ?></td>
-                              <td><?php echo $invitado['url_imagen']; ?></td>
+                              <td><img src="img/invitados/<?php echo $invitado['url_imagen']; ?>" width="150"></td>
                               <td>
-                                <a href="editar-categoria.php?id=<?php echo $invitado['id_categoria']; ?>" class="btn bg-orange btn-flat margin ">
+                                <a href="editar-invitado.php?id=<?php echo $invitado['invitado_id']; ?>" class="btn bg-orange btn-flat margin ">
                                   <i class="fa fa-pencil"></i>
                                 </a>
-                                <a href="#" data-id="<?php echo $invitado['id_categoria']; ?>" data-tipo="categoria" class="btn bg-maroon btn-flat margin borrar_registro">
+                                <a href="#" data-id="<?php echo $invitado['invitado_id']; ?>" data-tipo="invitado" class="btn bg-maroon btn-flat margin borrar_registro">
                                   <i class="fa fa-trash"></i>
                                 </a>
                               </td>
