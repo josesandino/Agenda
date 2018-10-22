@@ -8,13 +8,8 @@ $biografia = $_POST['biografia_invitado'];
 $id_registro = $_POST['id_registro'];
 
 
-<<<<<<< HEAD
-if($_POST['registro'] == 'nuevo'){ 
-
-=======
 
 if($_POST['registro'] == 'nuevo') { 
->>>>>>> 83a235945e00c50667d9d38714745b679c43cc04
       /*
        $respuesta = array(
            'post' => $_POST,
@@ -28,11 +23,7 @@ if($_POST['registro'] == 'nuevo') {
         mkdir($directorio, 0755, true); 
     }
 
-<<<<<<< HEAD
-       if(move_uploaded_file($_FILES['archivo_imagen']['tmp_name'], $directorio . $_FILES['archivo_imagen']['name'])) {
-=======
     if(move_uploaded_file($_FILES['archivo_imagen']['tmp_name'], $directorio . $_FILES['archivo_imagen']['name'])) {
->>>>>>> 83a235945e00c50667d9d38714745b679c43cc04
            $imagen_url = $_FILES['archivo_imagen']['name'];
            $imagen_resultado = "Se subió correctamente";
     } else {
@@ -47,18 +38,11 @@ if($_POST['registro'] == 'nuevo') {
         $stmt->execute();
         $id_insertado = $stmt->insert_id;
         if($stmt->affected_rows) {
-<<<<<<< HEAD
-          $respuesta = array(
-              'respuesta' => 'exito',              
-              'id_insertado' => $id_insertado
-          );
-=======
         $respuesta = array(
             'respuesta' => 'exito',
             'id_insertado' => $id_insertado,
             'resultado_imagen' => $imagen_resultado              
         );
->>>>>>> 83a235945e00c50667d9d38714745b679c43cc04
         } else {
         $respuesta = array(
             'respuesta' => 'error'

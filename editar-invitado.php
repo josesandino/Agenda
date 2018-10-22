@@ -70,7 +70,7 @@
                       <div class="box-footer">
                           <input type="hidden" name="registro" value="actualizar">
                           <input type="hidden" name="id_registro" value="<?php  echo $invitados['invitado_id']; ?>">
-                          <button type="submit" class="btn btn-primary" id="crear_registro_invitado">Añadir</button>
+                          <button type="submit" class="btn btn-primary" id="crear_registro_invitado">Guardar</button>
                       </div>
                 </form>
             </div>
