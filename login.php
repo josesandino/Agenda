@@ -12,7 +12,7 @@
 
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>MI</b>Agenda</a>
+    <a href="#"><b>Mi</b>Agenda</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
